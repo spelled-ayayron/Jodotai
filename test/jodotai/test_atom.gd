@@ -2,6 +2,7 @@ extends GutTest
 
 # --- get_value / set_value ---
 
+
 func test_atom_holds_initial_value():
 	var a = Jodotai.atom(5)
 	assert_eq(a.get_value(), 5)
@@ -41,6 +42,7 @@ func test_atom_set_same_value_no_signal():
 
 # --- reset ---
 
+
 func test_atom_reset_restores_initial_value():
 	var a = Jodotai.atom(10)
 	a.set_value(99)
@@ -65,6 +67,7 @@ func test_atom_reset_no_signal_when_already_at_initial():
 
 # --- subscribe ---
 
+
 func test_subscribe_callback_receives_old_and_new():
 	var a = Jodotai.atom(0)
 	var received = []
@@ -74,12 +77,14 @@ func test_subscribe_callback_receives_old_and_new():
 	assert_eq(received[0], [0, 7])
 
 
-func test_subscribe_callback_not_called_on_same_value():
+func test_subscribe_callback_only_called_on_value_change():
 	var a = Jodotai.atom(5)
 	var count = [0]
 	a.subscribe(func(_o, _n): count[0] += 1)
 	a.set_value(5)
 	assert_eq(count[0], 0)
+	a.set_value(6)
+	assert_eq(count[0], 1)
 
 
 func test_subscribe_returns_unsubscribe_callable():
@@ -102,6 +107,7 @@ func test_multiple_subscribers_all_notified():
 
 
 # --- typed factories ---
+
 
 func test_bool_factory_holds_value():
 	var a = Atom.bool(true)
