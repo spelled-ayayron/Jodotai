@@ -1,3 +1,5 @@
+<img width="256" height="256" alt="jodotai" src="https://github.com/user-attachments/assets/892763e8-6d51-4a4c-a08e-ea49cdd0b9b8" />
+
 # Jodotai
 
 **Reactive atomic state for Godot 4.** Jotai-style atoms with automatic dependency
