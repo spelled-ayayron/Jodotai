@@ -83,6 +83,11 @@ func resize(new_size: int) -> void:
 	mutated.emit()
 
 
+func append(value) -> void:
+	_data.append(value)
+	mutated.emit()
+
+
 func append_array(arr: Array) -> void:
 	_data.append_array(arr)
 	mutated.emit()
@@ -146,3 +151,7 @@ func _iter_next(iter: Array) -> bool:
 
 func _iter_get(iter) -> Variant:
 	return _data[iter]
+
+
+func _to_string() -> String:
+	return str(_data)

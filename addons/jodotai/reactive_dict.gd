@@ -92,3 +92,7 @@ func _iter_next(iter) -> bool:
 
 func _iter_get(iter) -> Variant:
 	return _iter_keys_cache[iter]
+
+
+func _to_string() -> String:
+	return str(_data)
